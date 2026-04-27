@@ -35,7 +35,7 @@
 - `src/common/bgi_dialog_json.py`: JSON 提取与导回
 - `src/common/bgi_dialog_txt.py`: TXT 提取与导回
 
-当前工具包版支持：
+当前版本支持：
 
 - 提取剧情对话到 `JSON`
 - 提取剧情对话到 `TXT` 双行格式
@@ -91,9 +91,9 @@ Bgi_asdis/
 - `src/common/asdis.py`: 公共汇编/反汇编辅助函数
 - `src/common/bgi_dialog_json.py`: BSD/BPD 到 JSON 的提取与导回
 - `src/common/bgi_dialog_txt.py`: BSD/BPD 到 TXT 的提取与导回
-- `src/v1/bgidis.py`: v1/bs5 剧情脚本反汇编
-- `src/v1/bgias.py`: v1/bs5 剧情脚本汇编
-- `src/v1/bgiop.py`: v1/bs5 操作码定义
+- `src/v1/bgidis.py`: v1 剧情脚本反汇编
+- `src/v1/bgias.py`: v1 剧情脚本汇编
+- `src/v1/bgiop.py`: v1 操作码定义
 - `src/v0/bgidis_v0.py`: v0 剧情脚本反汇编
 - `src/v0/bgias_v0.py`: v0 剧情脚本汇编
 - `src/v0/bgiop_v0.py`: v0 操作码定义
