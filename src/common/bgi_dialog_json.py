@@ -407,18 +407,9 @@ def _looks_like_user_function_call(lines, call_idx):
     return False
 
 def _extract_print_message_entry(lines, call_idx):
-    if _is_print_message_call(lines[call_idx]):
-        return _is_dialog_call(lines, call_idx)
-    if not _is_noarg_call_line(lines[call_idx]):
+    if not _is_print_message_call(lines[call_idx]):
         return None
-    parsed = _is_dialog_call(lines, call_idx)
-    if not parsed:
-        return None
-    # Structural fallback: accept calls that look like dialog output but avoid
-    # user-function dispatch patterns whose last string is a function token.
-    if _looks_like_user_function_call(lines, call_idx):
-        return None
-    return parsed
+    return _is_dialog_call(lines, call_idx)
 
 def _is_user_func_helper_call(lines, index):
     call_name = _extract_call_name(lines[index])
@@ -436,6 +427,13 @@ def _is_user_func_helper_call(lines, index):
     stripped = lines[arg_idx].strip()
     return stripped.startswith('push_')
 
+def _is_user_func_call(line):
+    call_name = _extract_call_name(line)
+    if not call_name:
+        return False
+    _, base = _split_qualified_name(call_name)
+    return base == "f_01c"
+
 def _is_user_func_arg_line(lines, index):
     stripped = lines[index].strip()
     if not stripped or stripped.startswith('//'):
@@ -448,7 +446,7 @@ def _is_user_func_arg_line(lines, index):
     return stripped.startswith('push_')
 
 def _extract_user_func_entries(lines, call_idx, user_function_names):
-    if not user_function_names or not _is_noarg_call_line(lines[call_idx]):
+    if not user_function_names or not _is_user_func_call(lines[call_idx]):
         return []
     target_names = set(_normalize_user_function_name_for_match(x) for x in user_function_names)
     cursor = _prev_effective_non_nargs_line(lines, call_idx)
