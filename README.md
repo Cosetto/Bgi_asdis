@@ -1,5 +1,7 @@
 # Bgi_asdis
 
+**最新版本已迁移至[bgi_toolkit](https://github.com/Lite0812/bgi_toolkit)**
+
 一套用于 `BGI (Buriko General Interpreter) / Ethornell` 游戏引擎脚本文件的反汇编、汇编与文本提取工具，可用于分析和修改 BGI 引擎游戏的脚本函数、参数与对话文本。
 
 ## 功能概览
